@@ -1,0 +1,279 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ясемин — Салон красоты в Оше</title>
+  <meta name="description" content="Ясемин — профессиональный салон красоты в Оше. Стрижки, окрашивание, маникюр, макияж. Онлайн запись.">
+  <meta name="keywords" content="салон красоты Ош, Ясемин салон, маникюр Ош, стрижки Ош, яsemin salon">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Ясе<span>мин</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#gallery">Галерея</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#contact">Контакты</a></li>
+  </ul>
+  <button class="btn btn-primary nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Записаться</button>
+  <button class="nav-toggle">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Салон красоты • Ош, Кыргызстан</p>
+      <h1 class="hero-title">Ясемин —<br><em>красота</em><br>с душой</h1>
+      <p class="hero-subtitle">Профессиональный уход, современные техники и атмосфера тепла в центре Оша.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Записаться онлайн</button>
+        <a href="#services" class="btn btn-outline">Наши услуги</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-stat">500+</div>
+        <div class="hero-card-label">довольных клиентов</div>
+        <div class="hero-badges">
+          <div class="badge-item"><span class="badge-dot"></span> Опыт 5+ лет</div>
+          <div class="badge-item"><span class="badge-dot"></span> Ош, Кыргызстан</div>
+          <div class="badge-item"><span class="badge-dot"></span> Пн–Вс 9:00–20:00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">Что мы предлагаем</p>
+    <h2 class="section-title">Наши услуги</h2>
+    <p class="section-sub">Широкий спектр процедур для вашей красоты и ухода.</p>
+    <div class="services-tabs">
+      {% for cat_key, cat_name in categories %}
+        {% if services_by_category|dictsort:cat_key %}
+        <button class="tab-btn {% if forloop.first %}active{% endif %}" data-tab="{{ cat_key }}">{{ cat_name }}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% for cat_key, cat_name in categories %}
+    <div class="tab-panel {% if forloop.first %}active{% endif %}" id="tab-{{ cat_key }}">
+      <div class="services-grid">
+        {% for service in services_by_category|dictsort:cat_key %}
+          {% if service.category == cat_key %}
+          <div class="service-item">
+            <div class="service-cat">{{ service.get_category_display }}</div>
+            <div class="service-name">{{ service.name }}</div>
+            {% if service.description %}<p style="font-size:13px;color:var(--text-muted);margin-top:4px;">{{ service.description }}</p>{% endif %}
+            <div class="service-meta">
+              <span class="service-price">{{ service.price }} сом</span>
+              <span class="service-dur">{{ service.duration }} мин</span>
+            </div>
+          </div>
+          {% endif %}
+        {% empty %}
+          <p style="padding:2rem;color:var(--text-muted);">Услуги скоро появятся</p>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <p class="section-label">Наши работы</p>
+    <h2 class="section-title">Галерея</h2>
+    <p class="section-sub">Смотрите результаты наших мастеров.</p>
+    <div class="gallery-grid">
+      {% for photo in gallery %}
+      <div class="gallery-item">
+        <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
+      </div>
+      {% empty %}
+      {% for i in "123456789012" %}
+      <div class="gallery-item">
+        <div class="gallery-placeholder">Фото работ<br>скоро появятся</div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <p class="section-label">Мнения клиентов</p>
+    <h2 class="section-title">Отзывы</h2>
+    <div class="reviews-grid">
+      {% for review in reviews %}
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</div>
+        <p class="review-text">{{ review.text }}</p>
+        <p class="review-author">— {{ review.client_name }}</p>
+      </div>
+      {% empty %}
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Отличный салон! Мастера профессиональные, атмосфера приятная. Всем рекомендую!</p>
+        <p class="review-author">— Айгуль М.</p>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Делаю маникюр только здесь. Всегда аккуратно и красиво. Спасибо Ясемин!</p>
+        <p class="review-author">— Нурзат К.</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="review-form-btn">
+      <button class="btn btn-outline" onclick="openModal('review-modal')">Оставить отзыв</button>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-inner">
+    <p class="section-label">Онлайн запись</p>
+    <h2 class="section-title" style="color:var(--white)">Записаться<br>на приём</h2>
+    <p class="section-sub">Заполните форму — мы перезвоним для подтверждения.</p>
+    <div class="booking-grid">
+      <div class="booking-info">
+        <h3>Контакты</h3>
+        <ul class="booking-info-list">
+          <li><span>📍</span><span>г. Ош, ул. [Ваш адрес]</span></li>
+          <li><span>📞</span><span>+996 XXX XXX XXX</span></li>
+          <li><span>📱</span><span>WhatsApp / Telegram</span></li>
+          <li><span>🕐</span><span>Пн–Вс: 9:00 – 20:00</span></li>
+          <li><span>💳</span><span>Наличные и карта онлайн</span></li>
+        </ul>
+      </div>
+      <div class="booking-form">
+        <form id="book-form">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ваше имя *</label>
+              <input id="b-name" type="text" class="form-input" required placeholder="Айгуль">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Телефон *</label>
+              <input id="b-phone" type="tel" class="form-input" required placeholder="+996 700 000 000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input id="b-email" type="email" class="form-input" placeholder="email@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Услуга</label>
+            <select id="b-service" class="form-input">
+              <option value="">— Выберите услугу —</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Мастер</label>
+            <select id="b-master" class="form-input">
+              <option value="">— Любой мастер —</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Дата *</label>
+              <input id="b-date" type="date" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Время *</label>
+              <input id="b-time" type="time" class="form-input" required min="09:00" max="20:00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Оплата</label>
+            <div class="payment-methods">
+              <div class="pay-option">
+                <input type="radio" name="payment" id="pay-cash" value="cash" checked>
+                <label for="pay-cash" class="pay-label">💵 Наличные</label>
+              </div>
+              <div class="pay-option">
+                <input type="radio" name="payment" id="pay-card" value="card">
+                <label for="pay-card" class="pay-label">💳 Карта</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Комментарий</label>
+            <textarea id="b-comment" class="form-input" rows="3" placeholder="Пожелания..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Записаться →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Где нас найти</p>
+    <h2 class="section-title">Контакты</h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-detail"><div class="contact-detail-label">Адрес</div><div class="contact-detail-val">г. Ош, ул. [Ваш адрес]</div></div>
+        <div class="contact-detail"><div class="contact-detail-label">Телефон</div><div class="contact-detail-val">+996 XXX XXX XXX</div></div>
+        <div class="contact-detail"><div class="contact-detail-label">Режим работы</div><div class="contact-detail-val">Пн–Вс, 9:00 – 20:00</div></div>
+        <div class="contact-detail"><div class="contact-detail-label">Instagram</div><div class="contact-detail-val">@yasemin_salon_osh</div></div>
+      </div>
+      <div class="map-placeholder">📍 Карта — вставьте Google Maps iframe</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Салон красоты <span>Ясемин</span> • Ош, Кыргызстан • Все права защищены</p>
+</footer>
+
+<!-- REVIEW MODAL -->
+<div class="modal-overlay" id="review-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('review-modal')">×</button>
+    <h2>Оставить отзыв</h2>
+    <form id="review-form">
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="form-label">Ваше имя *</label>
+        <input id="r-name" type="text" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Оценка</label>
+        <div class="star-rating">
+          {% for i in "12345" %}<button type="button" class="star-btn" data-val="{{ forloop.counter }}">★</button>{% endfor %}
+        </div>
+        <input type="hidden" id="review-rating" value="5">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Ваш отзыв *</label>
+        <textarea id="r-text" class="form-input" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Отправить отзыв</button>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

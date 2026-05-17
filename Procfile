@@ -1,0 +1,1 @@
+web: gunicorn yasemin_salon.wsgi
