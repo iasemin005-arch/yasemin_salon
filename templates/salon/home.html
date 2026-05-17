@@ -116,28 +116,23 @@
   </div>
 </section>
 
+
 <!-- GALLERY -->
 <section id="gallery">
   <div class="section-inner">
     <p class="section-label">Наши работы</p>
     <h2 class="section-title">Галерея</h2>
     <p class="section-sub">Смотрите результаты наших мастеров.</p>
-    <div class="gallery-grid">
-      {% for photo in gallery %}
-      <div class="gallery-item">
-        <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
-      </div>
-      {% empty %}
-      {% for i in "123456789012" %}
-      <div class="gallery-item">
-        <div class="gallery-placeholder">Фото работ<br>скоро появятся</div>
-      </div>
-      {% endfor %}
-      {% endfor %}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:2.5rem;">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXJWk9ACFrF/" data-instgrm-version="14" style="width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DW3tZT0ghpv/" data-instgrm-version="14" style="width:100%;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/salon_podruzhki_osh/" data-instgrm-version="14" style="width:100%;"></blockquote>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://instagram.com/salon_podruzhki_osh" class="btn btn-outline" target="_blank">📸 Больше фото в Instagram</a>
     </div>
   </div>
 </section>
-
 <!-- REVIEWS -->
 <section id="reviews">
   <div class="section-inner">
