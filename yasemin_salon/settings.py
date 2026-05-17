@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -54,11 +53,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'yasemin_salon.wsgi.application'
 
 # Database configuration with Railway support
-if 'DATABASE_URL' in os.environ:
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    # Production on Railway with PostgreSQL
     DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('RAILWAY_DATABASE_NAME', ''),
+            'USER': os.environ.get('RAILWAY_DATABASE_USER', ''),
+            'PASSWORD': os.environ.get('RAILWAY_DATABASE_PASSWORD', ''),
+            'HOST': os.environ.get('RAILWAY_DATABASE_HOST', ''),
+            'PORT': os.environ.get('RAILWAY_DATABASE_PORT', '5432'),
+        }
     }
 else:
+    # Local development with SQLite
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
