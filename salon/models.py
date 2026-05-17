@@ -46,11 +46,18 @@ class Master(models.Model):
 class GalleryPhoto(models.Model):
     title = models.CharField(max_length=200, blank=True, verbose_name='Название')
     image = models.ImageField(upload_to='gallery/', blank=True, null=True, verbose_name='Фото')
-    video_url = models.URLField(blank=True, verbose_name='Ссылка на видео/фото (YouTube/Instagram)')
     category = models.CharField(max_length=20, choices=Service.CATEGORY_CHOICES, default='other', verbose_name='Категория')
     master = models.ForeignKey(Master, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Мастер')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True, verbose_name='Показывать')
+
+    class Meta:
+        ordering = ['-uploaded_at']
+        verbose_name = 'Фото галереи'
+        verbose_name_plural = 'Галерея'
+
+    def __str__(self):
+        return self.title or f"Фото #{self.pk}"
 
     class Meta:
         ordering = ['-uploaded_at']
