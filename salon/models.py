@@ -60,14 +60,6 @@ class GalleryPhoto(models.Model):
     def __str__(self):
         return self.title or f"Фото #{self.pk}"
 
-    class Meta:
-        ordering = ['-uploaded_at']
-        verbose_name = 'Фото галереи'
-        verbose_name_plural = 'Галерея'
-
-    def __str__(self):
-        return self.title or f"Фото #{self.pk}"
-
 
 class Review(models.Model):
     client_name = models.CharField(max_length=200, verbose_name='Имя клиента')
