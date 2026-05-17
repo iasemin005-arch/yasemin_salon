@@ -11,11 +11,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='galleryphoto',
             name='video_url',
-            field=models.URLField(blank=True, default='', verbose_name='Ссылка на видео/фото'),
-        ),
-        migrations.AlterField(
-            model_name='galleryphoto',
-            name='image',
-            field=models.ImageField(blank=True, null=True, upload_to='gallery/', verbose_name='Фото'),
+            field=models.URLField(blank=True, default='', verbose_name='Ссылка (Instagram/TikTok/YouTube)'),
         ),
     ]
