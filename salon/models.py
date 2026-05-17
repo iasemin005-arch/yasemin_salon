@@ -48,6 +48,7 @@ class GalleryPhoto(models.Model):
     image = models.ImageField(upload_to='gallery/', blank=True, null=True, verbose_name='Фото')
     category = models.CharField(max_length=20, choices=Service.CATEGORY_CHOICES, default='other', verbose_name='Категория')
     master = models.ForeignKey(Master, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Мастер')
+    video_url = models.URLField(blank=True, default='', verbose_name='Ссылка (Instagram/TikTok/YouTube)')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True, verbose_name='Показывать')
 
