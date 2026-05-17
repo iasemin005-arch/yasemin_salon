@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Подружки — Салон красоты в Оше</title>
+  <title>Подружки — Салон красоты в Оше</title>
   <meta name="description" content="Подружки — профессиональный салон красоты в Оше. Стрижки, окрашивание, маникюр, макияж. Онлайн запись.">
-  <meta name="keywords" content="салон красоты Ош, Подружки салон, маникюр Ош, стрижки Ош, яsemin salon">
+  <meta name="keywords" content="салон красоты Ош, Подружки салон, маникюр Ош, стрижки Ош, salon podruzhki osh">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-brand">Подруж<span>ки</span>></a>
+  <a href="#" class="nav-brand">Подруж<span>ки</span></a>
   <ul class="nav-links">
     <li><a href="#services">Услуги</a></li>
     <li><a href="#gallery">Галерея</a></li>
@@ -38,8 +38,8 @@
     </div>
     <div class="hero-visual">
       <div class="hero-card">
-        <div class="hero-card-stat">500+</div>
-        <div class="hero-card-label">довольных клиентов</div>
+        <div class="hero-card-stat">9767+</div>
+        <div class="hero-card-label">подписчиков в Instagram</div>
         <div class="hero-badges">
           <div class="badge-item"><span class="badge-dot"></span> Опыт 5+ лет</div>
           <div class="badge-item"><span class="badge-dot"></span> Ош, Кыргызстан</div>
@@ -84,6 +84,35 @@
       </div>
     </div>
     {% endfor %}
+  </div>
+</section>
+
+<!-- MASTERS -->
+<section id="masters" style="background:var(--rose-pale);">
+  <div class="section-inner">
+    <p class="section-label">Наша команда</p>
+    <h2 class="section-title">Мастера</h2>
+    <p class="section-sub">Профессионалы своего дела с многолетним опытом.</p>
+    <div class="reviews-grid" style="margin-top:2.5rem;">
+      {% for master in masters %}
+      <div class="review-card" style="text-align:center;">
+        {% if master.photo %}
+        <img src="{{ master.photo.url }}" alt="{{ master.name }}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:1rem;">
+        {% else %}
+        <div style="width:100px;height:100px;border-radius:50%;background:var(--rose-light);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:36px;">👩‍🎨</div>
+        {% endif %}
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--dark);margin-bottom:4px;">{{ master.name }}</div>
+        <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">{{ master.specialty }}</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:6px;">Опыт: {{ master.experience_years }} лет</div>
+      </div>
+      {% empty %}
+      <div class="review-card" style="text-align:center;">
+        <div style="font-size:36px;margin-bottom:1rem;">👩‍🎨</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--dark);">Айпери Ибраимова</div>
+        <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Топ мастер — стрижки, окрашивание</div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
@@ -132,7 +161,7 @@
       <div class="review-card">
         <div class="review-quote">"</div>
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">Делаю маникюр только здесь. Всегда аккуратно и красиво. Спасибо Ясемин!</p>
+        <p class="review-text">Делаю маникюр только здесь. Всегда аккуратно и красиво. Спасибо Подружки!</p>
         <p class="review-author">— Нурзат К.</p>
       </div>
       {% endfor %}
@@ -153,9 +182,10 @@
       <div class="booking-info">
         <h3>Контакты</h3>
         <ul class="booking-info-list">
-          <li><span>📍</span><span>Курманжан Датка 181, Ош</span></li>
+          <li><span>📍</span><span>Курманжан Датка 181, Ош, Кыргызстан</span></li>
           <li><span>📞</span><span>+996 225220004</span></li>
-          <li><span>📱</span><span>WhatsApp / Telegram</span></li>
+          <li><span>📱</span><span><a href="https://wa.me/996225220004" style="color:var(--gold);">WhatsApp</a></span></li>
+          <li><span>📸</span><span><a href="https://instagram.com/salon_podruzhki_osh" style="color:var(--gold);">@salon_podruzhki_osh</a></span></li>
           <li><span>🕐</span><span>Пн–Вс: 9:00 – 20:00</span></li>
           <li><span>💳</span><span>Наличные и карта онлайн</span></li>
         </ul>
@@ -230,18 +260,36 @@
     <h2 class="section-title">Контакты</h2>
     <div class="contact-grid">
       <div>
-        <div class="contact-detail"><div class="contact-detail-label">Адрес</div><div class="contact-detail-val">г. Ош, ул. [Ваш адрес]</div></div>
-        <div class="contact-detail"><div class="contact-detail-label">Телефон</div><div class="contact-detail-val">+996 XXX XXX XXX</div></div>
-        <div class="contact-detail"><div class="contact-detail-label">Режим работы</div><div class="contact-detail-val">Пн–Вс, 9:00 – 20:00</div></div>
-        <div class="contact-detail"><div class="contact-detail-label">Instagram</div><div class="contact-detail-val">@yasemin_salon_osh</div></div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Адрес</div>
+          <div class="contact-detail-val">г. Ош, Курманжан Датка 181</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Телефон / WhatsApp</div>
+          <div class="contact-detail-val">+996 225220004</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Режим работы</div>
+          <div class="contact-detail-val">Пн–Вс, 9:00 – 20:00</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Instagram</div>
+          <div class="contact-detail-val">@salon_podruzhki_osh</div>
+        </div>
+        <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://wa.me/996225220004" class="btn btn-primary" style="font-size:13px;">💬 WhatsApp</a>
+          <a href="https://instagram.com/salon_podruzhki_osh" class="btn btn-outline" style="font-size:13px;">📸 Instagram</a>
+        </div>
       </div>
-      <div class="map-placeholder">📍 Карта — вставьте Google Maps iframe</div>
+      <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.5!2d72.7936!3d40.5283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDMxJzQyLjAiTiA3MsKwNDcnMzcuMCJF!5e0!3m2!1sru!2skg!4v1600000000000!5m2!1sru!2skg" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Салон красоты <span>Ясемин</span> • Ош, Кыргызстан • Все права защищены</p>
+  <p>© 2026 Салон красоты <span>Подружки</span> • Ош, Кыргызстан • Все права защищены</p>
 </footer>
 
 <!-- REVIEW MODAL -->
