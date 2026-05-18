@@ -12,582 +12,279 @@
       padding: 0;
       box-sizing: border-box;
     }
-
-    :root {
-      --rose: #d4a5a5;
-      --rose-light: #f5e6e6;
-      --dark: #2c1810;
-      --text-muted: #7a5a4e;
-      --white: #ffffff;
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Jost', sans-serif;
-    }
-
     body {
-      font-family: var(--font-sans);
-      color: var(--dark);
-      background: var(--white);
-      line-height: 1.5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fffaf7;
+      color: #2c1810;
     }
-
-    h1, h2, h3, .nav-brand {
-      font-family: var(--font-serif);
-      font-weight: 500;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* NAV */
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      background: var(--white);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       flex-wrap: wrap;
+      gap: 15px;
     }
-    .nav-brand {
+    .logo {
       font-size: 28px;
       font-weight: 600;
-      color: var(--dark);
+      color: #2c1810;
       text-decoration: none;
-      letter-spacing: 1px;
     }
-    .nav-brand span {
-      color: var(--rose);
-    }
+    .logo span { color: #d4a5a5; }
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 25px;
       list-style: none;
     }
     .nav-links a {
       text-decoration: none;
-      color: var(--dark);
-      font-weight: 400;
-      transition: color 0.3s;
+      color: #2c1810;
     }
-    .nav-links a:hover {
-      color: var(--rose);
-    }
-    .nav-cta {
-      background: var(--rose);
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 40px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
-      .nav-toggle { display: block; }
-    }
-
-    /* BUTTONS */
     .btn {
-      display: inline-block;
-      padding: 14px 32px;
+      padding: 10px 25px;
       border-radius: 40px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s;
-      cursor: pointer;
       border: none;
+      cursor: pointer;
       font-size: 16px;
     }
     .btn-primary {
-      background: var(--rose);
+      background: #d4a5a5;
       color: white;
     }
-    .btn-primary:hover {
-      background: #b88888;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1px solid var(--rose);
-      color: var(--dark);
-    }
-    .btn-outline:hover {
-      background: var(--rose-light);
-    }
-
-    /* HERO */
     .hero {
-      background: linear-gradient(135deg, #fff8f5 0%, #fdf0ea 100%);
-      padding: 60px 40px 80px;
+      background: linear-gradient(135deg, #fff8f5, #fdf0ea);
+      padding: 60px 40px;
     }
     .hero-inner {
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .hero-eyebrow {
-      color: var(--rose);
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-    .hero-title {
-      font-size: 56px;
-      line-height: 1.2;
-      margin-bottom: 24px;
-    }
-    .hero-title em {
-      color: var(--rose);
-      font-style: normal;
-    }
-    .hero-subtitle {
-      color: var(--text-muted);
-      margin-bottom: 32px;
-      font-size: 18px;
-    }
-    .hero-actions {
       display: flex;
-      gap: 16px;
+      gap: 50px;
+      align-items: center;
+      flex-wrap: wrap;
     }
+    .hero-text { flex: 1; }
+    .hero-title {
+      font-size: 48px;
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+    .hero-title em { color: #d4a5a5; font-style: normal; }
     .hero-card {
       background: white;
-      padding: 32px;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    }
-    .hero-card-stat {
-      font-size: 48px;
-      font-family: var(--font-serif);
-      color: var(--rose);
-    }
-    .hero-badges {
-      margin-top: 24px;
-    }
-    .badge-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .badge-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--rose);
-      border-radius: 50%;
-    }
-    @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-title { font-size: 40px; }
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 80px 40px;
-    }
-    .section-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    .section-label {
-      color: var(--rose);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-    .section-title {
-      font-size: 48px;
-      margin-bottom: 24px;
-    }
-    .section-sub {
-      color: var(--text-muted);
-      margin-bottom: 48px;
-      max-width: 600px;
-    }
-
-    /* SERVICES GRID */
-    .services-tabs {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 16px;
-    }
-    .tab-btn {
-      background: none;
-      border: none;
-      padding: 8px 24px;
-      font-size: 16px;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      color: var(--text-muted);
-    }
-    .tab-btn.active {
-      color: var(--rose);
-      border-bottom: 2px solid var(--rose);
-    }
-    .tab-panel {
-      display: none;
-    }
-    .tab-panel.active {
-      display: block;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .service-item {
-      background: #fafafa;
-      padding: 24px;
-      border-radius: 16px;
-      transition: all 0.3s;
-    }
-    .service-item:hover {
-      transform: translateY(-4px);
+      padding: 30px;
+      border-radius: 20px;
+      flex: 1;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
-    .service-cat {
-      color: var(--rose);
-      font-size: 12px;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+    .section {
+      padding: 70px 40px;
     }
-    .service-name {
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 12px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .service-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 16px;
+    .section-title {
+      font-size: 40px;
+      margin: 15px 0 20px;
     }
-    .service-price {
-      font-weight: 600;
-      color: var(--dark);
-    }
-    .service-dur {
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    /* GALLERY */
-    .gallery-grid {
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
+      gap: 30px;
+      margin-top: 40px;
     }
-    .gallery-item {
-      aspect-ratio: 1;
-      background: var(--rose-light);
+    .card {
+      background: white;
+      padding: 25px;
       border-radius: 20px;
-      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .price {
+      color: #d4a5a5;
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 15px;
     }
-    .gallery-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    /* REVIEWS */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 32px;
-    }
-    .review-card {
-      background: var(--rose-light);
-      padding: 32px;
-      border-radius: 24px;
-    }
-    .review-quote {
-      font-size: 48px;
-      color: var(--rose);
-      font-family: serif;
-      line-height: 1;
-    }
-    .review-stars {
-      color: #f5b042;
-      margin: 16px 0;
-    }
-    .review-text {
-      margin: 16px 0;
-      font-style: italic;
-    }
-    .review-author {
-      color: var(--text-muted);
-    }
-
-    /* BOOKING */
-    #booking {
-      background: var(--dark);
-      color: white;
-    }
-    .booking-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 48px;
-    }
-    .booking-info-list {
-      list-style: none;
-      margin-top: 24px;
-    }
-    .booking-info-list li {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    .form-label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-    .form-input, select.form-input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      font-family: inherit;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .payment-methods {
-      display: flex;
-      gap: 24px;
-    }
-    .pay-option {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    @media (max-width: 768px) {
-      .booking-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-    /* CONTACT */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 40px;
     }
-    .contact-detail {
-      margin-bottom: 24px;
-    }
-    .contact-detail-label {
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .map-placeholder {
-      background: #eee;
-      border-radius: 24px;
-      padding: 40px;
+    footer {
+      background: #2c1810;
+      color: white;
       text-align: center;
+      padding: 40px;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 700px) {
+      .nav { flex-direction: column; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      .hero-title { font-size: 32px; }
       .contact-grid { grid-template-columns: 1fr; }
     }
-
-    footer {
-      background: #1a1a1a;
-      color: white;
-      text-align: center;
-      padding: 40px;
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
     }
-
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal {
-      background: white;
-      padding: 32px;
-      border-radius: 24px;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    .star-rating .star-btn {
-      background: none;
-      border: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: #ddd;
-    }
-    .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--dark);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 40px;
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 1000;
-    }
+    .bg-rose { background: #fdf0ea; }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <nav class="nav">
-  <a href="#" class="nav-brand">Подруж<span>ки</span></a>
+  <a href="#" class="logo">Подруж<span>ки</span></a>
   <ul class="nav-links">
     <li><a href="#services">Услуги</a></li>
+    <li><a href="#masters">Мастера</a></li>
     <li><a href="#gallery">Галерея</a></li>
     <li><a href="#reviews">Отзывы</a></li>
     <li><a href="#contact">Контакты</a></li>
   </ul>
-  <button class="btn btn-primary nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Записаться</button>
-  <button class="nav-toggle">☰</button>
+  <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">📅 Записаться</button>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Салон красоты • Курманжан Датка 181, Ош</p>
-      <h1 class="hero-title">Подружки —<br><em>красота</em><br>с душой</h1>
-      <p class="hero-subtitle">Профессиональный уход, современные техники и атмосфера тепла в центре Оша.</p>
-      <div class="hero-actions">
+      <p style="color:#d4a5a5;">🌸 Салон красоты • Курманжан Датка 181, Ош</p>
+      <h1 class="hero-title">Подружки — <em>красота</em> с душой</h1>
+      <p style="color:#7a5a4e;">Профессиональный уход и атмосфера тепла в центре Оша.</p>
+      <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
         <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Записаться онлайн</button>
-        <a href="#services" class="btn btn-outline">Наши услуги</a>
+        <button class="btn" style="background:white; border:1px solid #d4a5a5;" onclick="location.href='#services'">Наши услуги</button>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-card">
-        <div class="hero-card-stat">500+</div>
-        <div class="hero-card-label">довольных клиентов</div>
-        <div class="hero-badges">
-          <div class="badge-item"><span class="badge-dot"></span> Опыт 5+ лет</div>
-          <div class="badge-item"><span class="badge-dot"></span> Ош, Кыргызстан</div>
-          <div class="badge-item"><span class="badge-dot"></span> Пн–Вс 9:00–20:00</div>
-        </div>
-      </div>
+    <div class="hero-card">
+      <div style="font-size: 48px; color:#d4a5a5;">500+</div>
+      <div>довольных клиентов</div>
+      <div style="margin-top: 20px;">✅ Опыт 5+ лет</div>
+      <div>📍 Ош, Кыргызстан</div>
+      <div>🕐 Пн–Вс 9:00–20:00</div>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="section-inner">
-    <p class="section-label">Что мы предлагаем</p>
+<section id="services" class="section">
+  <div class="container">
+    <p style="color:#d4a5a5;">💅 Что мы предлагаем</p>
     <h2 class="section-title">Наши услуги</h2>
-    <p class="section-sub">Широкий спектр процедур для вашей красоты и ухода.</p>
-    <div class="services-grid">
-      <div class="service-item"><div class="service-cat">НОГТИ</div><div class="service-name">Маникюр без покрытия</div><div class="service-meta"><span class="service-price">400 сом</span><span class="service-dur">60 мин</span></div></div>
-      <div class="service-item"><div class="service-cat">НОГТИ</div><div class="service-name">Маникюр с покрытием</div><div class="service-meta"><span class="service-price">800 сом</span><span class="service-dur">90 мин</span></div></div>
-      <div class="service-item"><div class="service-cat">НОГТИ</div><div class="service-name">Наращивание ногтей</div><div class="service-meta"><span class="service-price">1500 сом</span><span class="service-dur">120 мин</span></div></div>
-      <div class="service-item"><div class="service-cat">ВОЛОСЫ</div><div class="service-name">Стрижка</div><div class="service-meta"><span class="service-price">850 сом</span><span class="service-dur">60 мин</span></div></div>
-      <div class="service-item"><div class="service-cat">ВОЛОСЫ</div><div class="service-name">Окрашивание в один тон</div><div class="service-meta"><span class="service-price">900 сом</span><span class="service-dur">120 мин</span></div></div>
-      <div class="service-item"><div class="service-cat">МАКИЯЖ</div><div class="service-name">Макияж вечерний</div><div class="service-meta"><span class="service-price">1200 сом</span><span class="service-dur">75 мин</span></div></div>
-      <div class="service-item"><div class="service-cat">БРОВИ</div><div class="service-name">Наращивание ресниц 2D</div><div class="service-meta"><span class="service-price">1300 сом</span><span class="service-dur">150 мин</span></div></div>
+    <div class="grid">
+      <div class="card"><h3>💅 Маникюр без покрытия</h3><div class="price">400 сом</div><div>60 мин</div></div>
+      <div class="card"><h3>💅 Маникюр с покрытием</h3><div class="price">800 сом</div><div>90 мин</div></div>
+      <div class="card"><h3>💇‍♀️ Стрижка женская</h3><div class="price">850 сом</div><div>60 мин</div></div>
+      <div class="card"><h3>🎨 Окрашивание волос</h3><div class="price">900 сом</div><div>120 мин</div></div>
+      <div class="card"><h3>💄 Макияж вечерний</h3><div class="price">1200 сом</div><div>75 мин</div></div>
+      <div class="card"><h3>👁️ Наращивание ресниц</h3><div class="price">1300 сом</div><div>150 мин</div></div>
     </div>
   </div>
 </section>
 
-<section id="gallery">
-  <div class="section-inner">
-    <p class="section-label">Наши работы</p>
+<section id="masters" class="section bg-rose">
+  <div class="container">
+    <p style="color:#d4a5a5;">👩‍🎨 Наша команда</p>
+    <h2 class="section-title">Мастера</h2>
+    <div class="grid">
+      <div class="card"><h3>Айпери Ибраимова</h3><p>Топ мастер — стрижки, окрашивание</p><p>⭐ Опыт: 5 лет</p></div>
+      <div class="card"><h3>Нурзат Камалова</h3><p>Мастер маникюра и педикюра</p><p>⭐ Опыт: 3 года</p></div>
+      <div class="card"><h3>Дилнора Юсупова</h3><p>Визажист / Брови / Ресницы</p><p>⭐ Опыт: 4 года</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="section">
+  <div class="container">
+    <p style="color:#d4a5a5;">📸 Наши работы</p>
     <h2 class="section-title">Галерея</h2>
-    <p class="section-sub">Смотрите результаты наших мастеров.</p>
-    <div class="gallery-grid">
-      <div class="gallery-item"><div class="gallery-placeholder">Фото работ скоро появятся</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder">Фото работ скоро появятся</div></div>
-      <div class="gallery-item"><div class="gallery-placeholder">Фото работ скоро появятся</div></div>
+    <div class="grid">
+      <div class="card" style="text-align:center; padding:50px;">📸 Фото 1</div>
+      <div class="card" style="text-align:center; padding:50px;">📸 Фото 2</div>
+      <div class="card" style="text-align:center; padding:50px;">📸 Фото 3</div>
     </div>
-    <div style="text-align:center;margin-top:32px;"><a href="https://instagram.com/salon_podruzhki_osh" class="btn btn-outline" target="_blank">📸 Больше фото в Instagram</a></div>
+    <div style="text-align:center; margin-top:30px;">
+      <a href="https://instagram.com/salon_podruzhki_osh" style="background:#d4a5a5; color:white; padding:12px 30px; border-radius:40px; text-decoration:none; display:inline-block;" target="_blank">📸 Больше фото в Instagram</a>
+    </div>
   </div>
 </section>
 
-<section id="reviews">
-  <div class="section-inner">
-    <p class="section-label">Мнения клиентов</p>
+<section id="reviews" class="section bg-rose">
+  <div class="container">
+    <p style="color:#d4a5a5;">💬 Мнения клиентов</p>
     <h2 class="section-title">Отзывы</h2>
-    <div class="reviews-grid">
-      <div class="review-card"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text">Отличный салон! Мастера профессиональные, атмосфера приятная.</p><p class="review-author">— Айгуль М.</p></div>
-      <div class="review-card"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text">Делаю маникюр только здесь. Всегда аккуратно и красиво!</p><p class="review-author">— Нурзат К.</p></div>
+    <div class="grid">
+      <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Сделала окрашивание — результат превзошёл ожидания!"</p><p>— Зарина Б.</p></div>
+      <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Делаю маникюр только здесь. Всегда аккуратно!"</p><p>— Нурзат К.</p></div>
+      <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Мастера профессиональные, атмосфера уютная."</p><p>— Айгуль М.</p></div>
     </div>
   </div>
 </section>
 
-<section id="booking">
-  <div class="section-inner">
-    <p class="section-label">Онлайн запись</p>
-    <h2 class="section-title" style="color:white">Записаться на приём</h2>
-    <div class="booking-grid">
-      <div class="booking-info"><h3>Контакты</h3><ul class="booking-info-list"><li><span>📍</span><span>Курманжан Датка 181, Ош</span></li><li><span>📞</span><span>+996 225220004</span></li><li><span>📱</span><span>WhatsApp / Telegram</span></li><li><span>🕐</span><span>Пн–Вс: 9:00 – 20:00</span></li></ul></div>
-      <div class="booking-form"><form id="book-form"><div class="form-group"><label class="form-label">Ваше имя *</label><input type="text" class="form-input" id="b-name" required></div><div class="form-group"><label class="form-label">Телефон *</label><input type="tel" class="form-input" id="b-phone" required></div><button type="submit" class="btn btn-primary" style="width:100%">Записаться →</button></form></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="section-inner">
-    <p class="section-label">Где нас найти</p>
-    <h2 class="section-title">Контакты</h2>
+<section id="booking" class="section" style="background:#2c1810; color:white;">
+  <div class="container">
+    <h2 class="section-title" style="color:white;">📅 Записаться на приём</h2>
     <div class="contact-grid">
-      <div><div class="contact-detail"><div class="contact-detail-label">Адрес</div><div class="contact-detail-val">Курманжан Датка 181, Ош</div></div><div class="contact-detail"><div class="contact-detail-label">Телефон</div><div class="contact-detail-val">+996 225220004</div></div><div class="contact-detail"><div class="contact-detail-label">Instagram</div><div class="contact-detail-val">@salon_podruzhki_osh</div></div></div>
-      <div class="map-placeholder">📍 Карта — вставьте Google Maps iframe</div>
+      <div>
+        <p><strong>📍 Адрес:</strong> Курманжан Датка 181, Ош</p>
+        <p><strong>📞 Телефон:</strong> +996 225220004</p>
+        <p><strong>📱 WhatsApp / Telegram</strong></p>
+        <p><strong>🕐 Пн–Вс:</strong> 9:00 – 20:00</p>
+        <p><strong>💳 Оплата:</strong> Наличные и карта</p>
+      </div>
+      <div>
+        <form id="bookForm">
+          <input type="text" placeholder="Ваше имя *" required>
+          <input type="tel" placeholder="Телефон *" required>
+          <input type="email" placeholder="Email (необязательно)">
+          <select>
+            <option>— Выберите услугу —</option>
+            <option>Маникюр без покрытия - 400 сом</option>
+            <option>Маникюр с покрытием - 800 сом</option>
+            <option>Стрижка женская - 850 сом</option>
+            <option>Окрашивание волос - 900 сом</option>
+            <option>Макияж вечерний - 1200 сом</option>
+            <option>Наращивание ресниц - 1300 сом</option>
+          </select>
+          <button type="submit" class="btn btn-primary" style="width:100%; background:#d4a5a5; color:#2c1810; margin-top:10px;">✅ Записаться →</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<footer><p>© 2026 Салон красоты <span style="color:#d4a5a5">Подружки</span> • Ош, Кыргызстан • Все права защищены</p></footer>
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title">📍 Контакты</h2>
+    <div class="contact-grid">
+      <div>
+        <p><strong>Адрес:</strong> г. Ош, Курманжан Датка 181</p>
+        <p><strong>Телефон / WhatsApp:</strong> +996 225220004</p>
+        <p><strong>Instagram:</strong> @salon_podruzhki_osh</p>
+      </div>
+      <div>
+        <a href="https://wa.me/996225220004" style="background:#25D366; color:white; padding:12px 25px; border-radius:40px; text-decoration:none; display:inline-block; margin:5px;">💬 WhatsApp</a>
+        <a href="https://instagram.com/salon_podruzhki_osh" style="background:#E4405F; color:white; padding:12px 25px; border-radius:40px; text-decoration:none; display:inline-block; margin:5px;">📸 Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Салон красоты Подружки • Ош, Кыргызстан • Все права защищены</p>
+</footer>
 
 <script>
-  document.querySelectorAll('.nav-toggle').forEach(btn => { btn.addEventListener('click', () => { alert('Меню: Услуги, Галерея, Отзывы, Контакты'); }); });
-  document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); document.getElementById('tab-'+btn.dataset.tab).classList.add('active'); }); });
-  document.getElementById('book-form')?.addEventListener('submit', async (e) => { e.preventDefault(); alert('Заявка отправлена! Мы перезвоним.'); });
+  document.getElementById('bookForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('✅ Заявка отправлена! Мы перезвоним вам для подтверждения.');
+    this.reset();
+  });
 </script>
+
 </body>
 </html>
