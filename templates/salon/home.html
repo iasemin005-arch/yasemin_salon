@@ -4,19 +4,485 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ясемин — Салон красоты в Оше</title>
-  <meta name="description" content="Ясемин — профессиональный салон красоты в Оше. Стрижки, окрашивание, маникюр, макияж. Онлайн запись.">
-  <meta name="keywords" content="салон красоты Ош, Ясемин салон, маникюр Ош, стрижки Ош, яsemin salon">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<style>
-/* Emergency inline styles */
-</style>
+  <title>Подружки — Салон красоты в Оше</title>
+  <meta name="description" content="Подружки — профессиональный салон красоты в Оше. Стрижки, окрашивание, маникюр, макияж. Онлайн запись.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --rose: #d4a5a5;
+      --rose-light: #f5e6e6;
+      --dark: #2c1810;
+      --text-muted: #7a5a4e;
+      --white: #ffffff;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Jost', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, .nav-brand {
+      font-family: var(--font-serif);
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+    .nav-brand {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .nav-brand span {
+      color: var(--rose);
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--rose);
+    }
+    .nav-cta {
+      background: var(--rose);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+    .btn-primary {
+      background: var(--rose);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #b88888;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--rose);
+      color: var(--dark);
+    }
+    .btn-outline:hover {
+      background: var(--rose-light);
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #fff8f5 0%, #fdf0ea 100%);
+      padding: 60px 40px 80px;
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      color: var(--rose);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 56px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      color: var(--rose);
+      font-style: normal;
+    }
+    .hero-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-size: 18px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+    .hero-card {
+      background: white;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+    .hero-card-stat {
+      font-size: 48px;
+      font-family: var(--font-serif);
+      color: var(--rose);
+    }
+    .hero-badges {
+      margin-top: 24px;
+    }
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--rose);
+      border-radius: 50%;
+    }
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-title { font-size: 40px; }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 80px 40px;
+    }
+    .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-label {
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 48px;
+      margin-bottom: 24px;
+    }
+    .section-sub {
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      max-width: 600px;
+    }
+
+    /* SERVICES GRID */
+    .services-tabs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 16px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 8px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      color: var(--text-muted);
+    }
+    .tab-btn.active {
+      color: var(--rose);
+      border-bottom: 2px solid var(--rose);
+    }
+    .tab-panel {
+      display: none;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .service-item {
+      background: #fafafa;
+      padding: 24px;
+      border-radius: 16px;
+      transition: all 0.3s;
+    }
+    .service-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .service-cat {
+      color: var(--rose);
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .service-name {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .service-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .service-price {
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .service-dur {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* GALLERY */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--rose-light);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* REVIEWS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .review-card {
+      background: var(--rose-light);
+      padding: 32px;
+      border-radius: 24px;
+    }
+    .review-quote {
+      font-size: 48px;
+      color: var(--rose);
+      font-family: serif;
+      line-height: 1;
+    }
+    .review-stars {
+      color: #f5b042;
+      margin: 16px 0;
+    }
+    .review-text {
+      margin: 16px 0;
+      font-style: italic;
+    }
+    .review-author {
+      color: var(--text-muted);
+    }
+
+    /* BOOKING */
+    #booking {
+      background: var(--dark);
+      color: white;
+    }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 48px;
+    }
+    .booking-info-list {
+      list-style: none;
+      margin-top: 24px;
+    }
+    .booking-info-list li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .form-input, select.form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-family: inherit;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .payment-methods {
+      display: flex;
+      gap: 24px;
+    }
+    .pay-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (max-width: 768px) {
+      .booking-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .contact-detail {
+      margin-bottom: 24px;
+    }
+    .contact-detail-label {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .map-placeholder {
+      background: #eee;
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    footer {
+      background: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal {
+      background: white;
+      padding: 32px;
+      border-radius: 24px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .star-rating .star-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #ddd;
+    }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--dark);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 40px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-brand">Ясе<span>мин</span></a>
+  <a href="#" class="nav-brand">Подруж<span>ки</span></a>
   <ul class="nav-links">
     <li><a href="#services">Услуги</a></li>
     <li><a href="#gallery">Галерея</a></li>
@@ -27,12 +493,11 @@
   <button class="nav-toggle">☰</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <p class="hero-eyebrow">Салон красоты • Ош, Кыргызстан</p>
-      <h1 class="hero-title">Ясемин —<br><em>красота</em><br>с душой</h1>
+      <p class="hero-eyebrow">Салон красоты • Курманжан Датка 181, Ош</p>
+      <h1 class="hero-title">Подружки —<br><em>красота</em><br>с душой</h1>
       <p class="hero-subtitle">Профессиональный уход, современные техники и атмосфера тепла в центре Оша.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Записаться онлайн</button>
@@ -53,230 +518,76 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="section-inner">
     <p class="section-label">Что мы предлагаем</p>
     <h2 class="section-title">Наши услуги</h2>
     <p class="section-sub">Широкий спектр процедур для вашей красоты и ухода.</p>
-    <div class="services-tabs">
-      {% for cat_key, cat_name in categories %}
-        {% if services_by_category|dictsort:cat_key %}
-        <button class="tab-btn {% if forloop.first %}active{% endif %}" data-tab="{{ cat_key }}">{{ cat_name }}</button>
-        {% endif %}
-      {% endfor %}
+    <div class="services-grid">
+      <div class="service-item"><div class="service-cat">НОГТИ</div><div class="service-name">Маникюр без покрытия</div><div class="service-meta"><span class="service-price">400 сом</span><span class="service-dur">60 мин</span></div></div>
+      <div class="service-item"><div class="service-cat">НОГТИ</div><div class="service-name">Маникюр с покрытием</div><div class="service-meta"><span class="service-price">800 сом</span><span class="service-dur">90 мин</span></div></div>
+      <div class="service-item"><div class="service-cat">НОГТИ</div><div class="service-name">Наращивание ногтей</div><div class="service-meta"><span class="service-price">1500 сом</span><span class="service-dur">120 мин</span></div></div>
+      <div class="service-item"><div class="service-cat">ВОЛОСЫ</div><div class="service-name">Стрижка</div><div class="service-meta"><span class="service-price">850 сом</span><span class="service-dur">60 мин</span></div></div>
+      <div class="service-item"><div class="service-cat">ВОЛОСЫ</div><div class="service-name">Окрашивание в один тон</div><div class="service-meta"><span class="service-price">900 сом</span><span class="service-dur">120 мин</span></div></div>
+      <div class="service-item"><div class="service-cat">МАКИЯЖ</div><div class="service-name">Макияж вечерний</div><div class="service-meta"><span class="service-price">1200 сом</span><span class="service-dur">75 мин</span></div></div>
+      <div class="service-item"><div class="service-cat">БРОВИ</div><div class="service-name">Наращивание ресниц 2D</div><div class="service-meta"><span class="service-price">1300 сом</span><span class="service-dur">150 мин</span></div></div>
     </div>
-    {% for cat_key, cat_name in categories %}
-    <div class="tab-panel {% if forloop.first %}active{% endif %}" id="tab-{{ cat_key }}">
-      <div class="services-grid">
-        {% for service in services_by_category|dictsort:cat_key %}
-          {% if service.category == cat_key %}
-          <div class="service-item">
-            <div class="service-cat">{{ service.get_category_display }}</div>
-            <div class="service-name">{{ service.name }}</div>
-            {% if service.description %}<p style="font-size:13px;color:var(--text-muted);margin-top:4px;">{{ service.description }}</p>{% endif %}
-            <div class="service-meta">
-              <span class="service-price">{{ service.price }} сом</span>
-              <span class="service-dur">{{ service.duration }} мин</span>
-            </div>
-          </div>
-          {% endif %}
-        {% empty %}
-          <p style="padding:2rem;color:var(--text-muted);">Услуги скоро появятся</p>
-        {% endfor %}
-      </div>
-    </div>
-    {% endfor %}
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div class="section-inner">
     <p class="section-label">Наши работы</p>
     <h2 class="section-title">Галерея</h2>
     <p class="section-sub">Смотрите результаты наших мастеров.</p>
     <div class="gallery-grid">
-      {% for photo in gallery %}
-      <div class="gallery-item">
-        <img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy">
-      </div>
-      {% empty %}
-      {% for i in "123456789012" %}
-      <div class="gallery-item">
-        <div class="gallery-placeholder">Фото работ<br>скоро появятся</div>
-      </div>
-      {% endfor %}
-      {% endfor %}
+      <div class="gallery-item"><div class="gallery-placeholder">Фото работ скоро появятся</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder">Фото работ скоро появятся</div></div>
+      <div class="gallery-item"><div class="gallery-placeholder">Фото работ скоро появятся</div></div>
     </div>
+    <div style="text-align:center;margin-top:32px;"><a href="https://instagram.com/salon_podruzhki_osh" class="btn btn-outline" target="_blank">📸 Больше фото в Instagram</a></div>
   </div>
 </section>
 
-<!-- REVIEWS -->
 <section id="reviews">
   <div class="section-inner">
     <p class="section-label">Мнения клиентов</p>
     <h2 class="section-title">Отзывы</h2>
     <div class="reviews-grid">
-      {% for review in reviews %}
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">{% for i in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</div>
-        <p class="review-text">{{ review.text }}</p>
-        <p class="review-author">— {{ review.client_name }}</p>
-      </div>
-      {% empty %}
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Отличный салон! Мастера профессиональные, атмосфера приятная. Всем рекомендую!</p>
-        <p class="review-author">— Айгуль М.</p>
-      </div>
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Делаю маникюр только здесь. Всегда аккуратно и красиво. Спасибо Ясемин!</p>
-        <p class="review-author">— Нурзат К.</p>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="review-form-btn">
-      <button class="btn btn-outline" onclick="openModal('review-modal')">Оставить отзыв</button>
+      <div class="review-card"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text">Отличный салон! Мастера профессиональные, атмосфера приятная.</p><p class="review-author">— Айгуль М.</p></div>
+      <div class="review-card"><div class="review-quote">"</div><div class="review-stars">★★★★★</div><p class="review-text">Делаю маникюр только здесь. Всегда аккуратно и красиво!</p><p class="review-author">— Нурзат К.</p></div>
     </div>
   </div>
 </section>
 
-<!-- BOOKING -->
 <section id="booking">
   <div class="section-inner">
     <p class="section-label">Онлайн запись</p>
-    <h2 class="section-title" style="color:var(--white)">Записаться<br>на приём</h2>
-    <p class="section-sub">Заполните форму — мы перезвоним для подтверждения.</p>
+    <h2 class="section-title" style="color:white">Записаться на приём</h2>
     <div class="booking-grid">
-      <div class="booking-info">
-        <h3>Контакты</h3>
-        <ul class="booking-info-list">
-          <li><span>📍</span><span>г. Ош, ул. [Ваш адрес]</span></li>
-          <li><span>📞</span><span>+996 XXX XXX XXX</span></li>
-          <li><span>📱</span><span>WhatsApp / Telegram</span></li>
-          <li><span>🕐</span><span>Пн–Вс: 9:00 – 20:00</span></li>
-          <li><span>💳</span><span>Наличные и карта онлайн</span></li>
-        </ul>
-      </div>
-      <div class="booking-form">
-        <form id="book-form">
-          {% csrf_token %}
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Ваше имя *</label>
-              <input id="b-name" type="text" class="form-input" required placeholder="Айгуль">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Телефон *</label>
-              <input id="b-phone" type="tel" class="form-input" required placeholder="+996 700 000 000">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input id="b-email" type="email" class="form-input" placeholder="email@example.com">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Услуга</label>
-            <select id="b-service" class="form-input">
-              <option value="">— Выберите услугу —</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Мастер</label>
-            <select id="b-master" class="form-input">
-              <option value="">— Любой мастер —</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Дата *</label>
-              <input id="b-date" type="date" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Время *</label>
-              <input id="b-time" type="time" class="form-input" required min="09:00" max="20:00">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Оплата</label>
-            <div class="payment-methods">
-              <div class="pay-option">
-                <input type="radio" name="payment" id="pay-cash" value="cash" checked>
-                <label for="pay-cash" class="pay-label">💵 Наличные</label>
-              </div>
-              <div class="pay-option">
-                <input type="radio" name="payment" id="pay-card" value="card">
-                <label for="pay-card" class="pay-label">💳 Карта</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Комментарий</label>
-            <textarea id="b-comment" class="form-input" rows="3" placeholder="Пожелания..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">Записаться →</button>
-        </form>
-      </div>
+      <div class="booking-info"><h3>Контакты</h3><ul class="booking-info-list"><li><span>📍</span><span>Курманжан Датка 181, Ош</span></li><li><span>📞</span><span>+996 225220004</span></li><li><span>📱</span><span>WhatsApp / Telegram</span></li><li><span>🕐</span><span>Пн–Вс: 9:00 – 20:00</span></li></ul></div>
+      <div class="booking-form"><form id="book-form"><div class="form-group"><label class="form-label">Ваше имя *</label><input type="text" class="form-input" id="b-name" required></div><div class="form-group"><label class="form-label">Телефон *</label><input type="tel" class="form-input" id="b-phone" required></div><button type="submit" class="btn btn-primary" style="width:100%">Записаться →</button></form></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
     <p class="section-label">Где нас найти</p>
     <h2 class="section-title">Контакты</h2>
     <div class="contact-grid">
-      <div>
-        <div class="contact-detail"><div class="contact-detail-label">Адрес</div><div class="contact-detail-val">г. Ош, ул. [Ваш адрес]</div></div>
-        <div class="contact-detail"><div class="contact-detail-label">Телефон</div><div class="contact-detail-val">+996 XXX XXX XXX</div></div>
-        <div class="contact-detail"><div class="contact-detail-label">Режим работы</div><div class="contact-detail-val">Пн–Вс, 9:00 – 20:00</div></div>
-        <div class="contact-detail"><div class="contact-detail-label">Instagram</div><div class="contact-detail-val">@yasemin_salon_osh</div></div>
-      </div>
+      <div><div class="contact-detail"><div class="contact-detail-label">Адрес</div><div class="contact-detail-val">Курманжан Датка 181, Ош</div></div><div class="contact-detail"><div class="contact-detail-label">Телефон</div><div class="contact-detail-val">+996 225220004</div></div><div class="contact-detail"><div class="contact-detail-label">Instagram</div><div class="contact-detail-val">@salon_podruzhki_osh</div></div></div>
       <div class="map-placeholder">📍 Карта — вставьте Google Maps iframe</div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2026 Салон красоты <span>Ясемин</span> • Ош, Кыргызстан • Все права защищены</p>
-</footer>
+<footer><p>© 2026 Салон красоты <span style="color:#d4a5a5">Подружки</span> • Ош, Кыргызстан • Все права защищены</p></footer>
 
-<!-- REVIEW MODAL -->
-<div class="modal-overlay" id="review-modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('review-modal')">×</button>
-    <h2>Оставить отзыв</h2>
-    <form id="review-form">
-      {% csrf_token %}
-      <div class="form-group">
-        <label class="form-label">Ваше имя *</label>
-        <input id="r-name" type="text" class="form-input" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Оценка</label>
-        <div class="star-rating">
-          {% for i in "12345" %}<button type="button" class="star-btn" data-val="{{ forloop.counter }}">★</button>{% endfor %}
-        </div>
-        <input type="hidden" id="review-rating" value="5">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Ваш отзыв *</label>
-        <textarea id="r-text" class="form-input" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" style="width:100%">Отправить отзыв</button>
-    </form>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<script src="{% static 'js/main.js' %}"></script>
+<script>
+  document.querySelectorAll('.nav-toggle').forEach(btn => { btn.addEventListener('click', () => { alert('Меню: Услуги, Галерея, Отзывы, Контакты'); }); });
+  document.querySelectorAll('.tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); document.getElementById('tab-'+btn.dataset.tab).classList.add('active'); }); });
+  document.getElementById('book-form')?.addEventListener('submit', async (e) => { e.preventDefault(); alert('Заявка отправлена! Мы перезвоним.'); });
+</script>
 </body>
 </html>
