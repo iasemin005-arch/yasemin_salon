@@ -2,288 +2,226 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Подружки — Салон красоты в Оше</title>
-  <meta name="description" content="Подружки — профессиональный салон красоты в Оше. Стрижки, окрашивание, маникюр, макияж. Онлайн запись.">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #fffaf7;
-      color: #2c1810;
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .logo {
-      font-size: 28px;
-      font-weight: 600;
-      color: #2c1810;
-      text-decoration: none;
-    }
-    .logo span { color: #d4a5a5; }
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #2c1810;
-    }
-    .btn {
-      padding: 10px 25px;
-      border-radius: 40px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .btn-primary {
-      background: #d4a5a5;
-      color: white;
-    }
-    .hero {
-      background: linear-gradient(135deg, #fff8f5, #fdf0ea);
-      padding: 60px 40px;
-    }
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      gap: 50px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .hero-text { flex: 1; }
-    .hero-title {
-      font-size: 48px;
-      line-height: 1.2;
-      margin: 20px 0;
-    }
-    .hero-title em { color: #d4a5a5; font-style: normal; }
-    .hero-card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      flex: 1;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-    .section {
-      padding: 70px 40px;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-size: 40px;
-      margin: 15px 0 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    .price {
-      color: #d4a5a5;
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-    }
-    footer {
-      background: #2c1810;
-      color: white;
-      text-align: center;
-      padding: 40px;
-    }
-    @media (max-width: 700px) {
-      .nav { flex-direction: column; }
-      .nav-links { flex-wrap: wrap; justify-content: center; }
-      .hero-title { font-size: 32px; }
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-    }
-    .bg-rose { background: #fdf0ea; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подружки - Салон красоты в Оше</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff5f0;
+        }
+        .header {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #c49494;
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        .btn {
+            background: #c49494;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #ffe8e0, #fff5f0);
+        }
+        .hero h1 {
+            font-size: 48px;
+            color: #c49494;
+        }
+        .section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #c49494;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .price {
+            color: #c49494;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .contact-form {
+            flex: 1;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        footer {
+            background: #2c1810;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        @media (max-width: 700px) {
+            .header { flex-direction: column; gap: 15px; }
+            .nav a { display: inline-block; margin: 5px; }
+        }
+    </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="#" class="logo">Подруж<span>ки</span></a>
-  <ul class="nav-links">
-    <li><a href="#services">Услуги</a></li>
-    <li><a href="#masters">Мастера</a></li>
-    <li><a href="#gallery">Галерея</a></li>
-    <li><a href="#reviews">Отзывы</a></li>
-    <li><a href="#contact">Контакты</a></li>
-  </ul>
-  <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">📅 Записаться</button>
-</nav>
-
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <p style="color:#d4a5a5;">🌸 Салон красоты • Курманжан Датка 181, Ош</p>
-      <h1 class="hero-title">Подружки — <em>красота</em> с душой</h1>
-      <p style="color:#7a5a4e;">Профессиональный уход и атмосфера тепла в центре Оша.</p>
-      <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-        <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Записаться онлайн</button>
-        <button class="btn" style="background:white; border:1px solid #d4a5a5;" onclick="location.href='#services'">Наши услуги</button>
-      </div>
+<div class="header">
+    <div class="logo">🌸 Подружки</div>
+    <div class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#masters">Мастера</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
     </div>
-    <div class="hero-card">
-      <div style="font-size: 48px; color:#d4a5a5;">500+</div>
-      <div>довольных клиентов</div>
-      <div style="margin-top: 20px;">✅ Опыт 5+ лет</div>
-      <div>📍 Ош, Кыргызстан</div>
-      <div>🕐 Пн–Вс 9:00–20:00</div>
-    </div>
-  </div>
-</section>
+    <button class="btn" onclick="location.href='#booking'">Записаться</button>
+</div>
 
-<section id="services" class="section">
-  <div class="container">
-    <p style="color:#d4a5a5;">💅 Что мы предлагаем</p>
-    <h2 class="section-title">Наши услуги</h2>
+<div class="hero">
+    <h1>Подружки — красота с душой</h1>
+    <p>📍 Курманжан Датка 181, Ош | 📞 +996 225 22 00 04</p>
+    <p>🕐 Пн–Вс 9:00–20:00</p>
+    <button class="btn" style="margin-top:20px" onclick="location.href='#booking'">Записаться онлайн</button>
+</div>
+
+<div id="services" class="section">
+    <h2>Наши услуги</h2>
     <div class="grid">
-      <div class="card"><h3>💅 Маникюр без покрытия</h3><div class="price">400 сом</div><div>60 мин</div></div>
-      <div class="card"><h3>💅 Маникюр с покрытием</h3><div class="price">800 сом</div><div>90 мин</div></div>
-      <div class="card"><h3>💇‍♀️ Стрижка женская</h3><div class="price">850 сом</div><div>60 мин</div></div>
-      <div class="card"><h3>🎨 Окрашивание волос</h3><div class="price">900 сом</div><div>120 мин</div></div>
-      <div class="card"><h3>💄 Макияж вечерний</h3><div class="price">1200 сом</div><div>75 мин</div></div>
-      <div class="card"><h3>👁️ Наращивание ресниц</h3><div class="price">1300 сом</div><div>150 мин</div></div>
+        <div class="card"><h3>💅 Маникюр без покрытия</h3><div class="price">400 сом</div></div>
+        <div class="card"><h3>💅 Маникюр с покрытием</h3><div class="price">800 сом</div></div>
+        <div class="card"><h3>💇‍♀️ Стрижка женская</h3><div class="price">850 сом</div></div>
+        <div class="card"><h3>🎨 Окрашивание волос</h3><div class="price">900 сом</div></div>
+        <div class="card"><h3>💄 Макияж вечерний</h3><div class="price">1200 сом</div></div>
+        <div class="card"><h3>👁️ Наращивание ресниц</h3><div class="price">1300 сом</div></div>
+        <div class="card"><h3>🦶 Педикюр</h3><div class="price">1000 сом</div></div>
+        <div class="card"><h3>✂️ Стрижка мужская</h3><div class="price">500 сом</div></div>
     </div>
-  </div>
-</section>
+</div>
 
-<section id="masters" class="section bg-rose">
-  <div class="container">
-    <p style="color:#d4a5a5;">👩‍🎨 Наша команда</p>
-    <h2 class="section-title">Мастера</h2>
+<div id="masters" class="section" style="background:#fceee8">
+    <h2>Наши мастера</h2>
     <div class="grid">
-      <div class="card"><h3>Айпери Ибраимова</h3><p>Топ мастер — стрижки, окрашивание</p><p>⭐ Опыт: 5 лет</p></div>
-      <div class="card"><h3>Нурзат Камалова</h3><p>Мастер маникюра и педикюра</p><p>⭐ Опыт: 3 года</p></div>
-      <div class="card"><h3>Дилнора Юсупова</h3><p>Визажист / Брови / Ресницы</p><p>⭐ Опыт: 4 года</p></div>
+        <div class="card"><h3>👩‍🎨 Айпери Ибраимова</h3><p>Топ мастер - стрижки, окрашивание</p><p>⭐ Опыт 5 лет</p></div>
+        <div class="card"><h3>👩‍🎨 Нурзат Камалова</h3><p>Мастер маникюра и педикюра</p><p>⭐ Опыт 3 года</p></div>
+        <div class="card"><h3>👩‍🎨 Дилнора Юсупова</h3><p>Визажист, брови, ресницы</p><p>⭐ Опыт 4 года</p></div>
     </div>
-  </div>
-</section>
+</div>
 
-<section id="gallery" class="section">
-  <div class="container">
-    <p style="color:#d4a5a5;">📸 Наши работы</p>
-    <h2 class="section-title">Галерея</h2>
+<div id="gallery" class="section">
+    <h2>Галерея</h2>
     <div class="grid">
-      <div class="card" style="text-align:center; padding:50px;">📸 Фото 1</div>
-      <div class="card" style="text-align:center; padding:50px;">📸 Фото 2</div>
-      <div class="card" style="text-align:center; padding:50px;">📸 Фото 3</div>
+        <div class="card" style="padding:40px">📸 Фото 1</div>
+        <div class="card" style="padding:40px">📸 Фото 2</div>
+        <div class="card" style="padding:40px">📸 Фото 3</div>
     </div>
-    <div style="text-align:center; margin-top:30px;">
-      <a href="https://instagram.com/salon_podruzhki_osh" style="background:#d4a5a5; color:white; padding:12px 30px; border-radius:40px; text-decoration:none; display:inline-block;" target="_blank">📸 Больше фото в Instagram</a>
+    <div style="text-align:center; margin-top:30px">
+        <a href="https://instagram.com/salon_podruzhki_osh" class="btn" style="background:#c49494; color:white; text-decoration:none;" target="_blank">📸 Больше фото в Instagram</a>
     </div>
-  </div>
-</section>
+</div>
 
-<section id="reviews" class="section bg-rose">
-  <div class="container">
-    <p style="color:#d4a5a5;">💬 Мнения клиентов</p>
-    <h2 class="section-title">Отзывы</h2>
+<div id="reviews" class="section" style="background:#fceee8">
+    <h2>Отзывы</h2>
     <div class="grid">
-      <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Сделала окрашивание — результат превзошёл ожидания!"</p><p>— Зарина Б.</p></div>
-      <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Делаю маникюр только здесь. Всегда аккуратно!"</p><p>— Нурзат К.</p></div>
-      <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Мастера профессиональные, атмосфера уютная."</p><p>— Айгуль М.</p></div>
+        <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Сделала окрашивание - результат супер!"</p><p>- Зарина Б.</p></div>
+        <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Маникюр идеальный, буду ходить только сюда"</p><p>- Нурзат К.</p></div>
+        <div class="card"><p>⭐⭐⭐⭐⭐</p><p>"Очень уютная атмосфера, мастера профессионалы"</p><p>- Айгуль М.</p></div>
     </div>
-  </div>
-</section>
+</div>
 
-<section id="booking" class="section" style="background:#2c1810; color:white;">
-  <div class="container">
-    <h2 class="section-title" style="color:white;">📅 Записаться на приём</h2>
-    <div class="contact-grid">
-      <div>
-        <p><strong>📍 Адрес:</strong> Курманжан Датка 181, Ош</p>
-        <p><strong>📞 Телефон:</strong> +996 225220004</p>
-        <p><strong>📱 WhatsApp / Telegram</strong></p>
-        <p><strong>🕐 Пн–Вс:</strong> 9:00 – 20:00</p>
-        <p><strong>💳 Оплата:</strong> Наличные и карта</p>
-      </div>
-      <div>
-        <form id="bookForm">
-          <input type="text" placeholder="Ваше имя *" required>
-          <input type="tel" placeholder="Телефон *" required>
-          <input type="email" placeholder="Email (необязательно)">
-          <select>
-            <option>— Выберите услугу —</option>
-            <option>Маникюр без покрытия - 400 сом</option>
-            <option>Маникюр с покрытием - 800 сом</option>
-            <option>Стрижка женская - 850 сом</option>
-            <option>Окрашивание волос - 900 сом</option>
-            <option>Макияж вечерний - 1200 сом</option>
-            <option>Наращивание ресниц - 1300 сом</option>
-          </select>
-          <button type="submit" class="btn btn-primary" style="width:100%; background:#d4a5a5; color:#2c1810; margin-top:10px;">✅ Записаться →</button>
-        </form>
-      </div>
+<div id="booking" class="section" style="background:#c49494; color:white">
+    <h2 style="color:white">📅 Записаться на прием</h2>
+    <div class="contact-row">
+        <div class="contact-info">
+            <p><strong>📍 Адрес:</strong> Курманжан Датка 181, Ош</p>
+            <p><strong>📞 Телефон:</strong> +996 225 22 00 04</p>
+            <p><strong>📱 WhatsApp:</strong> +996 225 22 00 04</p>
+            <p><strong>🕐 Режим работы:</strong> Пн–Вс 9:00–20:00</p>
+        </div>
+        <div class="contact-form">
+            <form id="bookForm">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Телефон" required>
+                <select>
+                    <option>Маникюр - 400/800 сом</option>
+                    <option>Стрижка - 500/850 сом</option>
+                    <option>Окрашивание - 900 сом</option>
+                    <option>Макияж - 1200 сом</option>
+                    <option>Ресницы - 1300 сом</option>
+                </select>
+                <button class="btn" style="background:#2c1810; color:white; width:100%">Отправить заявку</button>
+            </form>
+        </div>
     </div>
-  </div>
-</section>
+</div>
 
-<section id="contact" class="section">
-  <div class="container">
-    <h2 class="section-title">📍 Контакты</h2>
-    <div class="contact-grid">
-      <div>
-        <p><strong>Адрес:</strong> г. Ош, Курманжан Датка 181</p>
-        <p><strong>Телефон / WhatsApp:</strong> +996 225220004</p>
-        <p><strong>Instagram:</strong> @salon_podruzhki_osh</p>
-      </div>
-      <div>
-        <a href="https://wa.me/996225220004" style="background:#25D366; color:white; padding:12px 25px; border-radius:40px; text-decoration:none; display:inline-block; margin:5px;">💬 WhatsApp</a>
-        <a href="https://instagram.com/salon_podruzhki_osh" style="background:#E4405F; color:white; padding:12px 25px; border-radius:40px; text-decoration:none; display:inline-block; margin:5px;">📸 Instagram</a>
-      </div>
+<div id="contact" class="section">
+    <h2>Контакты</h2>
+    <div class="contact-row">
+        <div class="contact-info">
+            <p><strong>📍 Адрес:</strong> г. Ош, Курманжан Датка 181</p>
+            <p><strong>📞 Телефон:</strong> +996 225 22 00 04</p>
+            <p><strong>📸 Instagram:</strong> @salon_podruzhki_osh</p>
+        </div>
+        <div class="contact-info">
+            <a href="https://wa.me/996225220004" style="background:#25D366; color:white; padding:10px 20px; border-radius:30px; text-decoration:none;">💬 WhatsApp</a>
+            <a href="https://instagram.com/salon_podruzhki_osh" style="background:#E4405F; color:white; padding:10px 20px; border-radius:30px; text-decoration:none; margin-left:10px;">📸 Instagram</a>
+        </div>
     </div>
-  </div>
-</section>
+</div>
 
 <footer>
-  <p>© 2026 Салон красоты Подружки • Ош, Кыргызстан • Все права защищены</p>
+    <p>© 2026 Салон красоты Подружки • Ош, Кыргызстан</p>
 </footer>
 
 <script>
-  document.getElementById('bookForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('✅ Заявка отправлена! Мы перезвоним вам для подтверждения.');
-    this.reset();
-  });
+    document.getElementById('bookForm')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('✅ Заявка отправлена! Мы перезвоним вам.');
+        this.reset();
+    });
 </script>
 
 </body>
