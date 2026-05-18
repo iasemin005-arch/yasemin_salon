@@ -1,120 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Подружки - Салон красоты</title>
-    <style>
-        body { font-family: Arial; margin: 0; padding: 0; background: #fef6f0; }
-        .header { background: #d4a5a5; padding: 20px; text-align: center; color: white; }
-        .nav { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .nav a { margin: 0 20px; text-decoration: none; color: #d4a5a5; font-weight: bold; }
-        .hero { text-align: center; padding: 50px; background: linear-gradient(135deg, #fce4d6, #fef6f0); }
-        .hero h1 { color: #d4a5a5; font-size: 48px; }
-        .section { padding: 50px; max-width: 1200px; margin: auto; }
-        .section h2 { text-align: center; color: #d4a5a5; }
-        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .card { background: white; padding: 20px; border-radius: 15px; width: 250px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
-        .price { color: #d4a5a5; font-size: 22px; font-weight: bold; }
-        footer { background: #2c1810; color: white; text-align: center; padding: 20px; }
-        .btn { background: #d4a5a5; color: white; padding: 10px 30px; border: none; border-radius: 30px; cursor: pointer; }
-        input, select { width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; }
-    </style>
-</head>
-<body>
-
-<div class="header">
-    <h1>🌸 Подружки</h1>
-    <p>Салон красоты в Оше</p>
-</div>
-
-<div class="nav">
-    <a href="#services">Услуги</a>
-    <a href="#masters">Мастера</a>
-    <a href="#gallery">Галерея</a>
-    <a href="#reviews">Отзывы</a>
-    <a href="#contact">Контакты</a>
-</div>
-
-<div class="hero">
-    <h1>Красота с душой</h1>
-    <p>📍 Курманжан Датка 181, Ош | 📞 +996 225 22 00 04</p>
-    <button class="btn" onclick="location.href='#booking'">Записаться онлайн</button>
-</div>
-
-<div id="services" class="section">
-    <h2>Наши услуги</h2>
-    <div class="grid">
-        <div class="card"><h3>💅 Маникюр без покрытия</h3><div class="price">400 сом</div></div>
-        <div class="card"><h3>💅 Маникюр с покрытием</h3><div class="price">800 сом</div></div>
-        <div class="card"><h3>💇‍♀️ Стрижка женская</h3><div class="price">850 сом</div></div>
-        <div class="card"><h3>🎨 Окрашивание</h3><div class="price">900 сом</div></div>
-        <div class="card"><h3>💄 Макияж вечерний</h3><div class="price">1200 сом</div></div>
-        <div class="card"><h3>👁️ Наращивание ресниц</h3><div class="price">1300 сом</div></div>
-    </div>
-</div>
-
-<div id="masters" class="section" style="background:#fceee8">
-    <h2>Наши мастера</h2>
-    <div class="grid">
-        <div class="card"><h3>Айпери Ибраимова</h3><p>Стилист волос</p><p>⭐ 5 лет</p></div>
-        <div class="card"><h3>Нурзат Камалова</h3><p>Мастер маникюра</p><p>⭐ 3 года</p></div>
-        <div class="card"><h3>Дилнора Юсупова</h3><p>Визажист</p><p>⭐ 4 года</p></div>
-    </div>
-</div>
-
-<div id="gallery" class="section">
-    <h2>Галерея</h2>
-    <div class="grid">
-        <div class="card">📸 Фото работ</div>
-        <div class="card">📸 Фото работ</div>
-        <div class="card">📸 Фото работ</div>
-    </div>
-</div>
-
-<div id="reviews" class="section" style="background:#fceee8">
-    <h2>Отзывы</h2>
-    <div class="grid">
-        <div class="card">⭐⭐⭐⭐⭐ "Отлично!" - Зарина</div>
-        <div class="card">⭐⭐⭐⭐⭐ "Супер!" - Нурзат</div>
-        <div class="card">⭐⭐⭐⭐⭐ "Рекомендую!" - Айгуль</div>
-    </div>
-</div>
-
-<div id="booking" class="section" style="background:#d4a5a5; color:white">
-    <h2>📅 Записаться</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 40px;">
-        <div style="flex:1">
-            <p>📍 Курманжан Датка 181, Ош</p>
-            <p>📞 +996 225 22 00 04</p>
-            <p>🕐 Пн–Вс 9:00–20:00</p>
-        </div>
-        <div style="flex:1">
-            <form id="bookForm">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="tel" placeholder="Телефон" required>
-                <button class="btn" style="background:#2c1810; width:100%">Отправить</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div id="contact" class="section">
-    <h2>Контакты</h2>
-    <p style="text-align:center">📸 Instagram: @salon_podruzhki_osh</p>
-    <p style="text-align:center">💬 WhatsApp: +996 225 22 00 04</p>
-</div>
-
-<footer>
-    <p>© 2026 Подружки • Ош, Кыргызстан</p>
-</footer>
-
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script>
-    document.getElementById('bookForm')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('✅ Заявка отправлена!');
-        this.reset();
-    });
+  // Fallback if static fails
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!document.querySelector('nav.nav')) return;
+    var nav = document.querySelector('.nav');
+    if (nav && getComputedStyle(nav).position === 'static') {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdn.jsdelivr.net/gh/iasemin005-arch/yasemin_salon@main/static/css/style.css';
+      document.head.appendChild(link);
+    }
+  });
 </script>
-
-</body>
-</html>
