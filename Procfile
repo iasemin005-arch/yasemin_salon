@@ -1,3 +1,2 @@
-release: python manage.py migrate && python manage.py collectstatic --noinput && python manage.py shell -c "from django.contrib.auth.models import User; User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', '', 'admin123')"
-
+release: python manage.py migrate && python manage.py collectstatic --noinput
 web: gunicorn yasemin_salon.wsgi
